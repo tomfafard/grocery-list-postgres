@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Grocery List</title>
+    <link rel="stylesheet" href="app.css"></link>
+  </head>
+
+  <body>
+
+    <h1>Grocery List</h1>
+
+    <ul id="grocery-list">
+      <% @groceries.each do |item| %>
+        <li class="item">
+          <form method="post" action="/groceries/<%= item["id"] %>">
+            <a href="/groceries/<%= item["id"] %>" for="delete"><%= item["name"] %></a>
+            <input type="hidden" name="_method" id="delete" value="DELETE" />
+
+            <input type="submit" value="Delete" />
+          </form>
+          
+          <form method="get" action="/groceries/<%= item["id"] %>/edit">
+
+            <input type="submit" value="Update" />
+          </form>
+        </li>
+      <% end %>
+    </ul>
+
+    <fieldset>
+      <legend>Add Item</legend>
+      <form method="post" action="/groceries">
+        <label for="name">Name</label>
+        <input type="text" name="name" id="name" required/>
+
+        <input type="submit" value="Submit" />
+      </form>
+    </fieldset>
+
+  </body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Grocery List</title>
+    <link rel="stylesheet" href="app.css"></link>
+  </head>
+
+  <body>
+
+    <h1>Edit Item:</h1>
+
+    <form method="post" action="/groceries/<%=@grocery['id']%>">
+      <label for="name">Renamed Item</label>
+      <input type="text" name="name" id="name" value="<%=@grocery['name']%>" required/>
+      <input type="hidden" name="_method" id="patch" value="PATCH" />
+      <input type="submit" value="Change" />
+    </form>
+
+
+  </body>
+</html>
